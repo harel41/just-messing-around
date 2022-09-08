@@ -1,0 +1,69 @@
+using System;
+                    
+public class Program
+{
+    public static void Main()
+    {
+        string x = ("2.34.3.42");
+        Console.WriteLine(CheckIPValid(x));
+        Console.WriteLine(Reverse("4434"));
+        string str = ("aha 1.1.1.1 ok");
+        Console.WriteLine(getWords(str));
+
+
+    }
+    public static void getWords(string str)
+{
+    char newWord = ' ';
+    int count = 0; 
+    string[] wordsArr = str.Split(newWord);
+    foreach (string word in wordsArr){
+        count++;
+        if(count == 2){
+            Console.WriteLine(Reverse(word));
+        }
+        else if(CheckIPValid(word) != true){
+                Console.WriteLine(word);
+        }
+        
+        
+        
+
+        
+    
+    }    
+    }
+    
+    public static string Reverse(string s)
+{
+    char[] charArray = s.ToCharArray();
+    Array.Reverse(charArray);
+    return new string(charArray);
+}
+    
+    public static bool CheckIPValid(string str)
+{
+    char dot = '.';
+    string[] arr = str.Split(dot);
+    if (arr.Length != 4)
+    {
+        return false;
+    }
+    int Max = 255;
+    int temp; 
+    foreach (string check in arr)
+    {
+        if (check.Length > 3)
+        {
+            return false;
+        }
+
+        temp = int.Parse(check);
+        if (temp > Max)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+}
